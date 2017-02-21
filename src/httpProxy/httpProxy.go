@@ -77,7 +77,7 @@ func listenOnProxyPort(onSuccess func()) {
 	http.Serve(httpListener, httpHandler)
 }
 
-var commandToRun command.Command
+var commandToRun command.InterceptingCommand
 
 func proxyHandler(responseWriter http.ResponseWriter, request *http.Request) {
 	defer request.Body.Close()
@@ -91,8 +91,8 @@ func proxyHandler(responseWriter http.ResponseWriter, request *http.Request) {
 	if commandToRun != nil {
 		err, handled := commandToRun.Execute(responseWriter, request)
 
-		if(err != nil) {
-			fmt.Println("Error: ", err, " processing http request: ", request);
+		if err != nil {
+			fmt.Println("Error: ", err, " processing http request: ", request)
 		}
 
 		if handled {
@@ -110,7 +110,7 @@ func finit (responseWriter http.ResponseWriter, request *http.Request) {
 
 	if request.Method == "PUT" {
 		responseWriter.Write([]byte("Closing...\n"))
-		fmt.Printf("Later dude\n")
+		fmt.Printf("%s", "Later dude\n")
 		httpListener.Close()
 	}
 }

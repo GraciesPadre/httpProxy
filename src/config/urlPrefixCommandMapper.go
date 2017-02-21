@@ -15,7 +15,7 @@ type urlCommandEntry struct {
 var urlCommandEntryTable []urlCommandEntry
 var failFirstAttemptCommand = command.FailFirstAttemptCommand{}
 
-func CommandForUrlPrefix(url string, httpVerb string, ds3HttpClientConnectionInfo *Ds3HttpClientConnectionInfo) command.Command {
+func CommandForUrlPrefix(url string, httpVerb string, ds3HttpClientConnectionInfo *Ds3HttpClientConnectionInfo) command.InterceptingCommand {
     if strings.HasPrefix(url, "/Put_Job_Management_Test/lesmis-copies.txt") && httpVerb == http.MethodPut {
         return &failFirstAttemptCommand
     } else if strings.HasPrefix(url, "/Get_Job_Management_Test/lesmis-copies.txt") && httpVerb == http.MethodGet {
