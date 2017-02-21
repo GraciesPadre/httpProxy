@@ -9,9 +9,11 @@ import (
     "config"
 )
 
-var httpClientClientConnectionInfo config.Ds3HttpClientConnectionInfo
-var httpListener net.Listener
-var defaultCommand command.DefaultCommand
+var (
+	httpClientClientConnectionInfo config.Ds3HttpClientConnectionInfo
+	httpListener net.Listener
+	defaultCommand command.DefaultCommand
+)
 
 // TODO set the remote host and other configuration stuff from admin request
 
