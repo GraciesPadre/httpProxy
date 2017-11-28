@@ -19,11 +19,11 @@ func CommandForUrlPrefix(url string, httpVerb string, ds3HttpClientConnectionInf
     if strings.HasPrefix(url, "/Put_Job_Management_Test/lesmis-copies.txt") && httpVerb == http.MethodPut {
         return &failFirstAttemptCommand
     } else if strings.HasPrefix(url, "/Get_Job_Management_Test/lesmis-copies.txt") && httpVerb == http.MethodGet {
-        const maxNunRetries int = 1
-        return getPartialDataFromGetCommand(url, httpVerb, ds3HttpClientConnectionInfo, maxNunRetries)
+        const maxNumRetries = 1
+        return getPartialDataFromGetCommand(url, httpVerb, ds3HttpClientConnectionInfo, maxNumRetries)
     } else if strings.HasPrefix(url, "/Get_Job_Management_Test/GreatExpectations.txt") && httpVerb == http.MethodGet {
-        const maxNunRetries int = 2
-        return getPartialDataFromGetCommand(url, httpVerb, ds3HttpClientConnectionInfo, maxNunRetries)
+        const maxNumRetries = 2
+        return getPartialDataFromGetCommand(url, httpVerb, ds3HttpClientConnectionInfo, maxNumRetries)
     }
 
     return nil
