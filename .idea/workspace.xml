@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0fb76e90-0a1a-4510-b658-557cd52f36ec" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/command/returnPartialDataFromGetCommand.go" afterPath="$PROJECT_DIR$/src/command/returnPartialDataFromGetCommand.go" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
