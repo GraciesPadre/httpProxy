@@ -24,9 +24,28 @@ func CommandForUrlPrefix(url string, httpVerb string, ds3HttpClientConnectionInf
     } else if strings.HasPrefix(url, "/Get_Job_Management_Test/GreatExpectations.txt") && httpVerb == http.MethodGet {
         const maxNumRetries = 2
         return getPartialDataFromGetCommand(url, httpVerb, ds3HttpClientConnectionInfo, maxNumRetries)
+    } else if strings.HasPrefix(url, "/Get_Job_Management_Test/Gracie.bin") && httpVerb == http.MethodGet && askingForSecondBlobInGracieDotBin(url) {
+        const maxNumRetries = 1
+        return getPartialDataFromGetCommand(url, httpVerb, ds3HttpClientConnectionInfo, maxNumRetries)
     }
 
     return nil
+}
+
+func askingForSecondBlobInGracieDotBin(url string) bool {
+    if strings.HasPrefix(url, "/Get_Job_Management_Test/Gracie.bin") {
+        urlFields := strings.Split(url, "&")
+        if len(urlFields) > 1 {
+            urlFields := strings.Split(urlFields[1], "=")
+            if len(urlFields) > 1 {
+                if urlFields[1] == "10485760" {
+                    return true
+                }
+            }
+        }
+    }
+
+    return false
 }
 
 func getPartialDataFromGetCommand(url string,

@@ -44,7 +44,7 @@ func (partialDataFromGetCommand *PartialDataFromGetCommand) Execute(responseWrit
     partialDataFromGetCommand.numRetries++
 
     if partialDataFromGetCommand.numRetries <= partialDataFromGetCommand.MaxNumRetries {
-        numBytesToTransfer = bodyLength / 4
+        numBytesToTransfer = int(float32(bodyLength) * 0.8)
     } else {
         numBytesToTransfer = bodyLength
     }
